@@ -3,24 +3,26 @@ import { NgModule } from '@angular/core';
 
 import { AppComponent } from './components/root/app.component';
 import { ChatComponent } from './components/chat/chat.component';
+import { ContactsComponent } from './components/contacts/contacts.component';
 import { OverviewComponent } from './components/overview/overview.component';
-import { SettingsComponent } from './settings/settings.component';
-import { HelpComponent } from './help/help.component';
-import { AoutComponent } from './aout/aout.component';
-import { AboutComponent } from './about/about.component';
+import { SettingsComponent } from './components/settings/settings.component';
+import { HelpComponent } from './components/help/help.component';
+import { AboutComponent } from './components/about/about.component';
+import { AppRoutingModule } from './app-routing/app-routing.module';
 
 @NgModule({
   declarations: [
     AppComponent,
     ChatComponent,
+    ContactsComponent,
     OverviewComponent,
     SettingsComponent,
     HelpComponent,
-    AoutComponent,
     AboutComponent
   ],
   imports: [
-    BrowserModule
+    BrowserModule,
+    AppRoutingModule
   ],
   providers: [],
   bootstrap: [AppComponent]
