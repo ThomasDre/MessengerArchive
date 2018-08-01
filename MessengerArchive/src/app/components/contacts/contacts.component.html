@@ -1,22 +1,26 @@
-<section>
-  <header>
-    <nav class="left">
-      <ul>
-        <li>
-         <a routerLink="/settings">Settings</a>
-         <a routerLink="/help">Help</a>
-         <a routerLink="/about">About Us</a>
-        </li>
-      </ul>
-    </nav>
 
-    <div class="searchBar right">
-      	<input type="search" placeholder="Search">
-    </div>
-  </header>
+<header>
+  <nav class="left">
+    <ul>
+      <li>
+        <a routerLink="/settings">Settings</a>
+        <a routerLink="/help">Help</a>
+        <a routerLink="/about">About Us</a>
+      </li>
+    </ul>
+  </nav>
 
+  <div class="searchBar right">
+      <input type="search" placeholder="Search">
+  </div>
+</header>
 
-  <p>
-    overview works!
-  </p>  
+<section class="mainContent">
+  <ul class="overviewList options">
+    <li>Import</li>
+    <li>Merge (Planned)</li>
+  </ul>
+  <ul class="overviewList contacts">
+    <li ng-if="true">No contacts imported yet</li>
+  </ul>
 </section>
