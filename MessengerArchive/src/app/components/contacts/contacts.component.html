@@ -4,7 +4,11 @@
     <ul>
       <li>
         <a routerLink="/settings">Settings</a>
+      </li>
+      <li>
         <a routerLink="/help">Help</a>
+      </li>
+      <li>  
         <a routerLink="/about">About Us</a>
       </li>
     </ul>
@@ -22,5 +26,11 @@
   </ul>
   <ul class="overviewList contacts">
     <li ng-if="true">No contacts imported yet</li>
+
+    <!-- TODO: not checked, i cant believe that data att is really set, but no error right now, lets see -->
+    
+    <li *ngFor="let c of contacts" [attr.data-file]="c.file">
+        {{c.name}}
+    </li>
   </ul>
 </section>

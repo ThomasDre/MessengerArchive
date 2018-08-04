@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Contact } from '../../models/contact';
 
 @Component({
   selector: 'app-contacts',
@@ -6,6 +7,8 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./contacts.component.css']
 })
 export class ContactsComponent implements OnInit {
+
+  private contacts: Array<Contact>;
 
   constructor() { }
 
