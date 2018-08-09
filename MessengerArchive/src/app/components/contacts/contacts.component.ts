@@ -63,7 +63,8 @@ export class ContactsComponent implements OnInit {
     alert("IMPLEMENT MERGE");
   }
 
-  private click(data: string) {
+  private selectChat(data: string) {
     this.selectedChat.next(data);
+    alert(data);
   }
 }
