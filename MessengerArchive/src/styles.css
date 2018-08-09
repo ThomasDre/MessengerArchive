@@ -1,1 +1,142 @@
 /* You can add global styles to this file, and also import other style files */
+
+/* GLOBAL STYLES */
+
+* {
+    box-sizing: border-box;
+}
+
+html {
+    height: 100%;
+
+    min-width: 500px;
+    min-height: 300px;
+}
+
+html * {
+    height: 100%;
+}
+
+body {
+    width: 100%;
+    margin: 0;
+}
+
+app-root { 
+    display: flex;
+    flex-direction: column;
+}
+app-root * {
+    flex: 1 0 auto;
+}
+
+/* Main Header -- may not necessary */
+.mainHeader {
+    max-height: 30px;
+    background-color: gray;
+}
+h1 {
+    margin: 0;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    font-size: 20px;
+    text-align: center;
+}
+
+/* footer of page */
+.mainFooter {
+    max-height: 15px;
+    flex-shrink:  0;
+    background-color: gray; 
+}
+.mainFooter * {
+    margin: 0;
+}
+.mainFooter p {
+    text-align: center;
+}
+
+
+/* hamburger menu */
+
+nav ul {
+    list-style: none;
+}
+
+nav ul li {
+    display: none;
+}
+
+nav ul:hover {
+    background: lightgrey;
+}
+
+nav ul:hover li {
+    display: block;
+}
+
+a {
+    text-decoration: none;
+    color: black;
+}
+
+a:visited {
+    color: black;
+}
+
+/* option menu */
+.optionsHeader {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.optionsHeader .right {
+    order: 2;
+}
+
+.optionsHeader .left {
+    order: 1;
+}
+
+
+/* main root of all loaded component's templates */
+main {
+    height: auto;
+    display: flex;
+    flex-direction: row;
+
+    /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#d6f9ff+0,9ee8fa+100;Blue+3D */
+    background: #d6f9ff; /* Old browsers */
+    background: -moz-linear-gradient(top, #d6f9ff 0%, #9ee8fa 100%); /* FF3.6-15 */
+    background: -webkit-linear-gradient(top, #d6f9ff 0%,#9ee8fa 100%); /* Chrome10-25,Safari5.1-6 */
+    background: linear-gradient(to bottom, #d6f9ff 0%,#9ee8fa 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#d6f9ff', endColorstr='#9ee8fa',GradientType=0 ); /* IE6-9 */
+    background-repeat: no-repeat;
+
+}
+
+router-outlet + * {
+    width: 100%;
+}
+
+
+/* SPLITSCREEN CONTAINER (from overview page that consists of contact and chat component) */
+.splitscreen-container {
+    display: flex;
+    flex-direction: row;
+}
+
+.splitscreen-container *:nth-child(1) {
+    flex-grow: 1;
+}
+.splitscreen-container *:nth-child(2) {
+    flex-grow: 2;
+}
+
+
+.splitscreen-container > * {
+    flex-basis: 200px;
+    justify-content: space-between;
+}
