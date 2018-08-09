@@ -3,7 +3,12 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false
+  production: false,  
+  debug: true,
+  chatFolder: "../../../assets/data/chats/", // unverified
+  contactFolder: "../../../assets/data/", // unverified
+  contactsFileProd: "contacts.json", // unverified
+  contactsFileDebug: "_debug_contacts.json"
 };
 
 /*

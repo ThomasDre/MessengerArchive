@@ -1,7 +1,7 @@
 
-<header>
+<header class="optionsHeader">
   <nav class="left">
-    <ul>
+    <ul class="fa fa-bars">
       <li>
         <a routerLink="/settings">Settings</a>
       </li>
@@ -21,15 +21,15 @@
 
 <section class="mainContent">
   <ul class="overviewList options">
-    <li>Import</li>
-    <li>Merge (Planned)</li>
+    <li (click)="import()">Import</li>
+    <li (click)="merge()">Merge (Planned)</li>
   </ul>
   <ul class="overviewList contacts">
-    <li ng-if="true">No contacts imported yet</li>
+    <li *ngIf="!contactsExist">No contacts imported yet</li>
 
-    <!-- TODO: not checked, i cant believe that data att is really set, but no error right now, lets see -->
+    <!-- TODO: not checked iff data-file really stores the information from c.file -->
     
-    <li *ngFor="let c of contacts" [attr.data-file]="c.file">
+    <li *ngFor="let c of contacts" [attr.data-file]="c.file" (click)="selectChat(c.file)">
         {{c.name}}
     </li>
   </ul>

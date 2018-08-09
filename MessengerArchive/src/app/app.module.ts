@@ -1,6 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
+import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { AppComponent } from './components/root/app.component';
 import { ChatComponent } from './components/chat/chat.component';
@@ -10,6 +11,7 @@ import { SettingsComponent } from './components/settings/settings.component';
 import { HelpComponent } from './components/help/help.component';
 import { AboutComponent } from './components/about/about.component';
 import { AppRoutingModule } from './app-routing/app-routing.module';
+import { JSONReaderService } from './services/jsonreader.service';
 
 @NgModule({
   declarations: [
@@ -23,10 +25,13 @@ import { AppRoutingModule } from './app-routing/app-routing.module';
   ],
   imports: [
     BrowserModule,
+    HttpClientModule,
     AppRoutingModule,
     FormsModule
   ],
-  providers: [],
+  providers: [
+    JSONReaderService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

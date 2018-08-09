@@ -1,6 +1,7 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { ContactsComponent } from '../contacts/contacts.component';
 import { ChatComponent } from '../chat/chat.component';
+import { Observable, Subject } from 'rxjs';
 
 @Component({
   selector: 'app-overview',
@@ -15,9 +16,16 @@ export class OverviewComponent implements OnInit {
   @ViewChild(ChatComponent)
   private chatComponent: ChatComponent;
 
-  constructor() { }
+  private selectedChat: string;
+
+  constructor() { 
+    
+  }
 
   ngOnInit() {
+    this.contactsComponent.selectedChat$.subscribe(data => {
+      this.selectedChat = data;
+    })
   }
 
 }

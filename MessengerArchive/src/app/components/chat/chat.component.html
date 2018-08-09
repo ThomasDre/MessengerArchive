@@ -1,11 +1,28 @@
-<div *ngIf="!selectedChat">
-  <p>No chat is selected</p>
-</div>
+<header class="optionsHeader">
+  <nav class="right">
+    <ul class="fa fa-bars">
+      <li>Search by Date</li>
+      <li>Merge with...</li>
+      <li>Export</li>
+    </ul>
+  </nav>
 
-<div *ngIf="selectedChat">
-  <ul>
-    <li *ngFor="let x of chat">
-        {{x.sender}} -- {{x.message}}
-    </li>
-  </ul>
-</div>
+  <div class="searchBar left">
+      <input type="search" placeholder="Search">
+  </div>
+</header>
+
+<section class="mainContent">
+  <div *ngIf="!selectedChat">
+    <p>No chat is selected</p>
+  </div>
+  
+  <div *ngIf="selectedChat">
+    <ul>
+      <li *ngFor="let x of chat">
+          {{x.sender}} -- {{x.message}}
+      </li>
+    </ul>
+  </div>
+</section>
+
