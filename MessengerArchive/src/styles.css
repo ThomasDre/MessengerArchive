@@ -8,21 +8,20 @@
 
 html {
     height: 100%;
+    overflow: hidden;
 
     min-width: 500px;
     min-height: 300px;
 }
 
-html * {
-    height: 100%;
-}
-
 body {
+    height:100%;
     width: 100%;
     margin: 0;
 }
 
 app-root { 
+    height: 100%;
     display: flex;
     flex-direction: column;
 }
@@ -135,28 +134,47 @@ router-outlet + * {
     flex-grow: 2;
 }
 
+/* some inappropriate hardcoding - why is 120 vh and still smaller than viewport height??? */
+.splitscreen-container > * {
+    height: 120vh;
+}
+
 
 .splitscreen-container > * {
     flex-basis: 200px;
     justify-content: space-between;
 }
 
+/* main content - i.e. not the headers and options  => make this content scrollable */
+
+/* TODO: viible scrollbar with all browsers except chrome */
+.mainContent {
+    overflow-y: scroll;
+    height: 70%;
+}
+
+.mainContent::-webkit-scrollbar {
+    display: none;
+}
 
 /* Contact component */
 
 .contacts, .options {
     list-style: none;
-    padding: 5px;
+    padding: 0px 5px 0px 5px;
+    margin-bottom: 0;
+    margin-top: 0;
  }
 
 .contacts li, .options li {
     height: 35px;
     padding-bottom: 10px;
-    margin: 4px;
+    margin-bottom: 10px;
     display: flex;
     flex-direction: row;
     align-items: baseline;
 
+    border: 1px solid darkgray;
     border-radius: 25px;
 
 
@@ -166,4 +184,61 @@ background: -moz-radial-gradient(center, ellipse cover, rgba(255,255,255,1) 0%, 
 background: -webkit-radial-gradient(center, ellipse cover, rgba(255,255,255,1) 0%,rgba(229,229,229,1) 100%); /* Chrome10-25,Safari5.1-6 */
 background: radial-gradient(ellipse at center, rgba(255,255,255,1) 0%,rgba(229,229,229,1) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
 filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#e5e5e5',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
+}
+
+.contacts li:hover, .options li:hover {
+    box-shadow: 3px 3px gray;
+}
+
+
+.optionsIcon {
+    max-width: 60px;
+    padding-left: 12px;
+}
+
+.optionsText {
+    font-size: 25px;
+}
+
+img {
+    height: 30px;
+    width: 30px;
+}
+
+
+/* chat window */
+
+#chat {
+    list-style: none;
+}
+
+.chatBubble {
+    border: 1px solid white;
+    border-radius: 30px;
+
+    width: 60%;
+
+    margin-bottom: 1%;
+    
+    /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#ffffff+0,f6f6f6+47,ededed+100;White+3D+%231 */
+    background: #ffffff; /* Old browsers */
+    background: -moz-radial-gradient(center, ellipse cover, #ffffff 0%, #f6f6f6 47%, #ededed 100%); /* FF3.6-15 */
+    background: -webkit-radial-gradient(center, ellipse cover, #ffffff 0%,#f6f6f6 47%,#ededed 100%); /* Chrome10-25,Safari5.1-6 */
+    background: radial-gradient(ellipse at center, #ffffff 0%,#f6f6f6 47%,#ededed 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#ededed',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
+}
+
+.chatBubble.mainUser {
+    margin-left: 5%;
+}
+
+.chatBubble.otherUser {
+    margin-left: 35%;
+}
+
+.sender {
+    margin: 1% 0% 1% 5%;
+}
+.message {
+    margin: 1% 0% 1% 5%;
 }
