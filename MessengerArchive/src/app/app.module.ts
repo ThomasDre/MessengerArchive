@@ -12,6 +12,7 @@ import { HelpComponent } from './components/help/help.component';
 import { AboutComponent } from './components/about/about.component';
 import { AppRoutingModule } from './app-routing/app-routing.module';
 import { JSONReaderService } from './services/jsonreader.service';
+import { ParsePlainChatService } from './services/parse-plain-chat.service';
 
 @NgModule({
   declarations: [
@@ -30,7 +31,8 @@ import { JSONReaderService } from './services/jsonreader.service';
     FormsModule
   ],
   providers: [
-    JSONReaderService
+    JSONReaderService,
+    ParsePlainChatService
   ],
   bootstrap: [AppComponent]
 })
