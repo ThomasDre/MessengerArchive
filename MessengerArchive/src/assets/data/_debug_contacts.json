@@ -3,7 +3,8 @@
 	"contacts": [
 		{
 			"name": "John Doe",
-			"file": "_debug_.html"
+			"file": "_debug_.html",
+			"pic": "default/avatar.svg"
 		}
 	]
 }

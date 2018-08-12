@@ -17,6 +17,7 @@ export class OverviewComponent implements OnInit {
   private chatComponent: ChatComponent;
 
   private selectedChat: string;
+  private pictureOfChat: string;
 
   constructor() { 
     
@@ -25,6 +26,9 @@ export class OverviewComponent implements OnInit {
   ngOnInit() {
     this.contactsComponent.selectedChat$.subscribe(data => {
       this.selectedChat = data;
+    })
+    this.contactsComponent.picture$.subscribe(data => {
+      this.pictureOfChat = data;
     })
   }
 

@@ -44,10 +44,10 @@
 
     <!-- TODO: not checked iff data-file really stores the information from c.file -->
     
-    <li *ngFor="let c of contacts" [attr.data-file]="c.file" (click)="selectChat(c.file)">
+    <li *ngFor="let c of contacts" [attr.data-file]="c.file" (click)="selectChat(c)">
       <div class="optionsIcon">
         <!-- Make it accessible - Title shoudl say for whom it is? but maybe the upcoming div optionsText is already enough, ka -->
-        <img src="assets/img/icons/default/avatar.svg" title="Icon for contact">
+        <img [src]="c.pic" title="Icon for contact">
       </div>
       <div class="optionsText">{{c.name}}</div>
     </li>

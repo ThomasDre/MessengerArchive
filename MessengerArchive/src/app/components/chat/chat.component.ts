@@ -11,6 +11,7 @@ export class ChatComponent implements OnChanges {
 
   /* available chats shown in contacts template -> selection is */
   @Input() selectedChat: string = null;
+  @Input() picture: string = null;
 
   private parser: DOMParser;
   private document: Document;
@@ -34,7 +35,7 @@ export class ChatComponent implements OnChanges {
       this.chatBubbles = Array.prototype.slice.call(this.document.getElementsByClassName("chatBubble"),0);
       
       for (let i = 0; i < this.chatBubbles.length; i++) {
-        this.chat[i] = new ChatExchange(this.chatBubbles[i].getElementsByClassName("sender")[0].textContent, this.chatBubbles[i].getElementsByClassName("message")[0].textContent);
+        this.chat[i] = new ChatExchange(this.chatBubbles[i].getElementsByClassName("sender")[0].textContent, this.chatBubbles[i].getElementsByClassName("message")[0].textContent, this.chatBubbles[i].getAttributeNode("class").value.replace("chatBubble ", ""), i);
       }
     }
 

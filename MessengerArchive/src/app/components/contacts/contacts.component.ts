@@ -17,10 +17,15 @@ export class ContactsComponent implements OnInit {
   private selectedChat: Subject<string>;
   public selectedChat$: Observable<string>;
 
+  private picture: Subject<string>;
+  public picture$: Observable<string>;
+
   constructor(private jsonReader: JSONReaderService) {
     this.contacts = new Array<Contact>();
     this.selectedChat = new Subject<string>();
     this.selectedChat$ = this.selectedChat.asObservable();
+    this.picture = new Subject<string>();
+    this.picture$ = this.picture.asObservable();
   }
 
   ngOnInit() {
@@ -32,7 +37,7 @@ export class ContactsComponent implements OnInit {
       let response: [any] = ret["contacts"];
       
       for (let i = 0; i < response.length; i++) {
-        this.contacts.push(new Contact(response[i]["name"], response[i]["file"]));
+        this.contacts.push(new Contact(response[i]["name"], response[i]["file"], environment.picFolder + response[i]["pic"]));
       }
 
       if (this.contacts.length == 0) {
@@ -63,8 +68,8 @@ export class ContactsComponent implements OnInit {
     alert("IMPLEMENT MERGE");
   }
 
-  private selectChat(data: string) {
-    this.selectedChat.next(data);
-    alert(data);
+  private selectChat(data: Contact) {
+    this.selectedChat.next(data.file);
+    this.picture.next(data.pic);
   }
 }
