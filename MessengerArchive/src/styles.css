@@ -213,13 +213,25 @@ img {
 }
 
 .chatBubble {
+    margin-bottom: 1%;
+    display: flex;
+    flex-direction: row;
+}
+
+.chatBubble.mainUser {
+    margin-right: 35%;
+}
+
+.chatBubble.otherUser {
+    margin-left: 35%;
+}
+
+.content {
     border: 1px solid white;
     border-radius: 30px;
 
-    width: 60%;
+    width: 40%;
 
-    margin-bottom: 1%;
-    
     /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#ffffff+0,f6f6f6+47,ededed+100;White+3D+%231 */
     background: #ffffff; /* Old browsers */
     background: -moz-radial-gradient(center, ellipse cover, #ffffff 0%, #f6f6f6 47%, #ededed 100%); /* FF3.6-15 */
@@ -228,12 +240,9 @@ img {
     filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#ededed',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
 }
 
-.chatBubble.mainUser {
-    margin-left: 5%;
-}
-
-.chatBubble.otherUser {
-    margin-left: 35%;
+.chatIcon {
+    width: 40px;
+    flex: 0 0 auto;
 }
 
 .sender {
