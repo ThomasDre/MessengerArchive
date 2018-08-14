@@ -7,8 +7,7 @@
 			"pic": "default/avatar.svg",
 			"members": [
 				{ 
-					"user": "John Doe",
-					"pic": "default/avatar.svg"
+					"user": "John Doe"
 				}
 			]
 		},
@@ -19,13 +18,19 @@
 			"pic": "default/group.svg",
 			"members": [
 				{
-					"user": "John Doe",
-					"pic": "default/avatar.svg"
+					"user": "John Doe"
 				},
 				{
-					"user": "Joanne Doehoo",
-					"pic": "default/avatar.svg"
+					"user": "Joanne Doehoo"
 				}
+			]
+		},
+		
+		{
+			"name": "Joanne Doehoo",
+			"file": "",
+			"pic": "default/avatar.svg",
+			"members": [
 			]
 		}
 	]

@@ -3,6 +3,7 @@ import { Contact } from '../../models/contact';
 import { Observable, Subject } from 'rxjs';
 import { environment } from '../../../environments/environment';
 import { JSONReaderService } from '../../services/jsonreader.service';
+import { ParsePlainChatService } from '../../services/parse-plain-chat.service';
 
 @Component({
   selector: 'app-contacts',
@@ -20,7 +21,7 @@ export class ContactsComponent implements OnInit {
   private picture: Subject<string>;
   public picture$: Observable<string>;
 
-  constructor(private jsonReader: JSONReaderService) {
+  constructor(private jsonReader: JSONReaderService, private chatParser: ParsePlainChatService) {
     this.contacts = new Array<Contact>();
     this.selectedChat = new Subject<string>();
     this.selectedChat$ = this.selectedChat.asObservable();
@@ -37,7 +38,10 @@ export class ContactsComponent implements OnInit {
       let response: [any] = ret["contacts"];
       
       for (let i = 0; i < response.length; i++) {
-        this.contacts.push(new Contact(response[i]["name"], response[i]["file"], environment.picFolder + response[i]["pic"]));
+        /* load only contacts that have an existing chat */
+        if (response[i]["file"] != "") {
+          this.contacts.push(new Contact(response[i]["name"], response[i]["file"], environment.picFolder + response[i]["pic"]));
+        }
       }
 
       if (this.contacts.length == 0) {
