@@ -4,7 +4,29 @@
 		{
 			"name": "John Doe",
 			"file": "_debug_.html",
-			"pic": "default/avatar.svg"
+			"pic": "default/avatar.svg",
+			"members": [
+				{ 
+					"user": "John Doe",
+					"pic": "default/avatar.svg"
+				}
+			]
+		},
+		
+		{
+			"name": "Group Test",
+			"file": "_debug_group.html",
+			"pic": "default/group.svg",
+			"members": [
+				{
+					"user": "John Doe",
+					"pic": "default/avatar.svg"
+				},
+				{
+					"user": "Joanne Doehoo",
+					"pic": "default/avatar.svg"
+				}
+			]
 		}
 	]
 }
