@@ -11,6 +11,10 @@ export class JSONReaderService {
 
   constructor(private http: HttpClient) { }
 
+  /**
+   * Opens json file and returns an Observable of the data
+   * @param fileName name of the file
+   */
   public readFile(fileName: string): Observable<Contact> {
     return this.http.get<Contact>(environment.contactFolder + fileName);
   }
