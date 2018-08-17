@@ -13,6 +13,8 @@ import { AboutComponent } from './components/about/about.component';
 import { AppRoutingModule } from './app-routing/app-routing.module';
 import { JSONReaderService } from './services/jsonreader.service';
 import { ParsePlainChatService } from './services/parse-plain-chat.service';
+import { TimeService } from './services/time.service';
+import { ProccessingComponent } from './components/proccessing/proccessing.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +24,8 @@ import { ParsePlainChatService } from './services/parse-plain-chat.service';
     OverviewComponent,
     SettingsComponent,
     HelpComponent,
-    AboutComponent
+    AboutComponent,
+    ProccessingComponent
   ],
   imports: [
     BrowserModule,
@@ -32,7 +35,8 @@ import { ParsePlainChatService } from './services/parse-plain-chat.service';
   ],
   providers: [
     JSONReaderService,
-    ParsePlainChatService
+    ParsePlainChatService,
+    TimeService
   ],
   bootstrap: [AppComponent]
 })

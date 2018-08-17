@@ -4,6 +4,8 @@ import { Observable, Subject } from 'rxjs';
 import { environment } from '../../../environments/environment';
 import { JSONReaderService } from '../../services/jsonreader.service';
 import { ParsePlainChatService } from '../../services/parse-plain-chat.service';
+import { ChatDTO } from '../../models/chat-dto';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-contacts',
@@ -21,7 +23,7 @@ export class ContactsComponent implements OnInit {
   private picture: Subject<string>;
   public picture$: Observable<string>;
 
-  constructor(private jsonReader: JSONReaderService, private chatParser: ParsePlainChatService) {
+  constructor(private jsonReader: JSONReaderService, private chatParser: ParsePlainChatService, private router: Router) {
     this.contacts = new Array<Contact>();
     this.selectedChat = new Subject<string>();
     this.selectedChat$ = this.selectedChat.asObservable();
@@ -65,7 +67,14 @@ export class ContactsComponent implements OnInit {
   }
 
   private import() {
-    alert("IMPLEMENT IMPORT");
+    var input = document.createElement('input');
+    input.type = 'file';
+    input.click();
+    input.onchange = (event) => {
+      this.chatParser.parse(event);
+      this.router.navigate(["/processed", {op: "Import", showOpt: true}]);
+    }
+    
   }
 
   private merge() {
