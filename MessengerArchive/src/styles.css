@@ -58,7 +58,7 @@ h1 {
 
 /* hamburger menu */
 
-nav ul {
+ul {
     list-style: none;
 }
 
@@ -120,6 +120,19 @@ router-outlet + * {
     width: 100%;
 }
 
+/* NORMAL CONTAINER (Processing,About, Settings, Help) */
+.normal-container {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.normal-container > * {
+    margin-left: auto;
+    margin-right: auto;
+}
+
 
 /* SPLITSCREEN CONTAINER (from overview page that consists of contact and chat component) */
 .splitscreen-container {
@@ -147,7 +160,7 @@ router-outlet + * {
 
 /* main content - i.e. not the headers and options  => make this content scrollable */
 
-/* TODO: viible scrollbar with all browsers except chrome */
+/* TODO: vsible scrollbar with all browsers except chrome */
 .mainContent {
     overflow-y: scroll;
     height: 70%;
