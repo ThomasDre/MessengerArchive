@@ -1,5 +1,6 @@
 export class ChatDTO {
     public users: Array<string>;
+    public mainUser: string;        // has to be one of the users
     public file: string;
     public valid: boolean;
 

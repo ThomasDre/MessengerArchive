@@ -4,6 +4,7 @@ import { ChatDTO } from '../models/chat-dto';
 import { timeout } from 'q';
 import { Subject, Observable } from 'rxjs';
 import { TimeService } from './time.service';
+import * as $ from 'jquery';
 
 @Injectable({
   providedIn: 'root'
@@ -36,11 +37,11 @@ export class ParsePlainChatService {
   }
 
   /**
-   * The chosen txt. file is parsed and upon success the parsed file is stored as html.
+   * The chosen .txt file is parsed and upon success the parsed file is stored as html.
    * In case of an unexpected error an exception is thrown.
    * @param file the name of the plain txt. file
    */
-  public parse(event) {
+  public parse(event)  {
     var input = event.target;
 
     this.fr.onload = () => {
@@ -62,6 +63,45 @@ export class ParsePlainChatService {
     this.fr.readAsText(input.files[0]);
   }
 
+
+  /**
+   * This method has to be called after 'parse' of this service was called.
+   * To be successful, the mainUser hast to be specified in the dto object. Iff thats holds, the previously created
+   * document of the chat is updated and the specified mainUser is marked accordingly. Eventually its .html is saved
+   * and the metadata (name of chat, chatmembers, storagelocation of html) of the chat are inserted into the general config file. 
+   * @param chatDTO the data transfer object of the chat data
+   * @return a Promise is returned in order to notify the caller as soon as the request is finished.
+   *         In case of missing or invalid mainUser the promise will be rejected.
+   */
+  public complete(chatDTO: ChatDTO): Promise<any> {
+    return new Promise<any>((resolve, reject) => {
+      let mainUserCount: number = 0;
+      $(this.container.getElementById('chat')).children().each(function() {
+        let current = $(this);
+        if (current.hasClass("chatBubble")) {
+          if(current.find(".sender").text() == chatDTO.mainUser) {
+            current.addClass("mainUser");
+            mainUserCount++;
+          } else {
+            current.addClass("otherUser");
+          }
+        }
+        
+        if (mainUserCount == 0) {
+          reject("Submitted 'main user' name is invalid - none of the members could be identified by this name");
+        }        
+      });
+  
+      // save file
+      // TODO MISSING
+      resolve();
+    })
+  }
+
+
+  /* PRIVATE FUNCTIONS - INTERN FUNCTIONALITY */
+
+
   private processText(text: string) {
     // one exchange of a chat (chat is parsed exchange by exchange)
     var exchange: string;
@@ -81,9 +121,6 @@ export class ParsePlainChatService {
       console.log("Unexpected error occured - operation was not successfully");
       this.returnValue.valid = false;
    }
-
-    //alert(this.container.getElementById('find').innerHTML);
-    this.parseTmpResult.next(this.returnValue);
   }
 
   /**
@@ -146,10 +183,11 @@ export class ParsePlainChatService {
         // not a regular chat line --> preliminary content
         // do smth different, e.g. add users, choose group chat name etc.
       } else {
-        name = nameTest[0].slice(0, nameTest[0].length - 2);  // exclude the last 2 chars (": ")
+        name = nameTest[0].slice(0, nameTest[0].indexOf(": "));  // include only part until the first occurence of :
         msg = textExcDate.slice(name.length + 2, textExcDate.length);
 
         if (this.returnValue.containUser(name) == false) {
+          alert(name);
           this.returnValue.addUser(name);
         }
       

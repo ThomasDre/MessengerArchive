@@ -17,7 +17,6 @@ export class TimeService {
     date.setFullYear(Number.parseInt(timestamp.substr(6,2)));
     date.setHours(Number.parseInt(timestamp.substr(10,2)));
     date.setMinutes(Number.parseInt(timestamp.substr(13,2)));
-    //alert(date.getFullYear() + " " + date.getMonth() + " " + date.getDate() + " " + date.getHours() + " " + date.getMinutes());
     return date;
   }
 
