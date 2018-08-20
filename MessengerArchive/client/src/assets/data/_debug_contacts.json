@@ -3,31 +3,27 @@
 	"contacts": [
 		{
 			"name": "John Doe",
+			"id": 0,
 			"file": "_debug_.html",
 			"pic": "default/avatar.svg",
-			"members": [
-				{ 
-					"user": "John Doe"
-				}
+			"members": [		
+				"John Doe"	
 			]
 		},
 		
 		{
 			"name": "Group Test",
+			"id": 1,
 			"file": "_debug_group.html",
 			"pic": "default/group.svg",
 			"members": [
-				{
-					"user": "John Doe"
-				},
-				{
-					"user": "Joanne Doehoo"
-				}
+					"John Doe",	"Joanne Doehoo"	
 			]
 		},
 		
 		{
 			"name": "Joanne Doehoo",
+			"id": 2,
 			"file": "",
 			"pic": "default/avatar.svg",
 			"members": [
