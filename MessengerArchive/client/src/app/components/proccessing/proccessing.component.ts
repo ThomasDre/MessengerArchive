@@ -40,9 +40,9 @@ export class ProccessingComponent implements OnInit {
   private commit() {
     this.router.navigateByUrl("/overview");
     this.chatParser.complete(this.chatDTO).then(function(result) {
-      alert("Promise arrived");
+      console.log("Import request was completed successfully.")
     }, function(error) {
-      alert("Promise here and failed: " + error);
+      console.log("Error: Import request failed.")
     });
   }
 

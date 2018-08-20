@@ -37,7 +37,7 @@ export class ChatComponent implements OnChanges {
       client.responseType = "document";
       client.onreadystatechange = () => {
         let html: Document = client.response;
-        
+    
         if (html != null) {
           let chat = html.getElementById("chat");
           if (chat != null) {
