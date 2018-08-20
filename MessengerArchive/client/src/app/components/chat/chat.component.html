@@ -1,0 +1,25 @@
+<header class="optionsHeader">
+  <nav class="right">
+    <ul class="fa fa-bars">
+      <li>Search by Date</li>
+      <li>Merge with...</li>
+      <li>Export</li>
+    </ul>
+  </nav>
+
+  <div class="searchBar left">
+      <!-- search bar dummy implementation - always scrolls to element witz id of 3 -->
+      <input type="search" placeholder="Search" oninput="document.getElementById(3)? document.getElementById(3).scrollIntoView(): false">
+  </div>
+</header>
+
+<section class="mainContent">
+    <div *ngIf="!selectedChat">
+      <p>No chat is selected</p>
+    </div>
+    
+    <div id="chatContainer" *ngIf="selectedChat">
+      <!-- CHAT CONTENT WILL BE DYNAMICALLY INSERTED HERE  -->
+    </div>
+</section>
+

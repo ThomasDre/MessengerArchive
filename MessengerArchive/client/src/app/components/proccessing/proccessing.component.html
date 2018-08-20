@@ -1,0 +1,27 @@
+<section class="normal-container">
+  <h2>{{type}}</h2>
+
+  <div *ngIf="responsePending" id="processingStatusContainer">
+    <img [src]="picture" title="Loading Icon">
+    <p>Your Request is beeing processed</p>
+    <img [src]="picture" title="Loading Icon">
+  </div>
+  <div *ngIf="!responsePending">
+    <form id="proccessingUserChoice">
+      <legend>Choose as main user: </legend>
+      <ul>
+        <li *ngFor="let u of chatDTO.users; let i = index">
+          <!-- TODO: if possible set the parameter for the event differently, e.g. use the inputs's value... -->
+          <input type="radio" name="selMainUser" value="{{u}}" id="{{i}}" (change)="userSelection(u)">
+          <label for="{{i}}">{{u}}</label>
+        </li>
+      </ul>
+    </form>
+  </div>
+
+  <form id="proccessingConfirmCancel">
+    <input type="button" value="cancel" (click)="cancel()" id="cancelButton">
+    <input type="button" value="commit" (click)="commit()" id="commitButton" [disabled]="!commitValid">
+  </form>
+</section>
+

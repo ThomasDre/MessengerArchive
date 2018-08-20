@@ -1,0 +1,55 @@
+
+<header class="optionsHeader">
+  <nav class="left">
+    <ul class="fa fa-bars">
+      <li>
+        <a routerLink="/settings">Settings</a>
+      </li>
+      <li>
+        <a routerLink="/help">Help</a>
+      </li>
+      <li>  
+        <a routerLink="/about">About Us</a>
+      </li>
+    </ul>
+  </nav>
+
+  <div class="searchBar right">
+      <input type="search" placeholder="Search">
+  </div>
+</header>
+
+<section class="mainContent">
+  <ul class="overviewList options">
+
+    <!-- Consider structure - img inside div? name of option inside div? -->
+
+    <li (click)="import()">
+      <div class="optionsIcon">
+        <img src="assets/img/icons/default/import.svg" title="Icon for import option">
+      </div>
+      <div class="optionsText">Import</div>
+    </li>
+
+    <li (click)="merge()">
+      <div class="optionsIcon">
+        <img src="assets/img/icons/default/arrows-merge-pointing-to-right.svg" title="Icon for merge option">
+      </div>
+      <div class="optionsText">Merge (Planned)</div>
+    </li>
+  </ul>
+
+  <ul class="overviewList contacts">
+    <li *ngIf="!contactsExist">No contacts imported yet</li>
+
+    <!-- TODO: not checked iff data-file really stores the information from c.file -->
+    
+    <li *ngFor="let c of contacts" [attr.data-file]="c.file" (click)="selectChat(c)">
+      <div class="optionsIcon">
+        <!-- Make it accessible - Title shoudl say for whom it is? but maybe the upcoming div optionsText is already enough, ka -->
+        <img [src]="c.pic" title="Icon for contact">
+      </div>
+      <div class="optionsText">{{c.name}}</div>
+    </li>
+  </ul>
+</section>

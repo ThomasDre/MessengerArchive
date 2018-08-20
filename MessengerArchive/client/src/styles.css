@@ -1,0 +1,266 @@
+/* You can add global styles to this file, and also import other style files */
+
+/* GLOBAL STYLES */
+
+* {
+    box-sizing: border-box;
+}
+
+html {
+    height: 100%;
+    overflow: hidden;
+
+    min-width: 500px;
+    min-height: 300px;
+}
+
+body {
+    height:100%;
+    width: 100%;
+    margin: 0;
+}
+
+app-root { 
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+app-root * {
+    flex: 1 0 auto;
+}
+
+/* Main Header -- may not necessary */
+.mainHeader {
+    max-height: 30px;
+    background-color: gray;
+}
+h1 {
+    margin: 0;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    font-size: 20px;
+    text-align: center;
+}
+
+/* footer of page */
+.mainFooter {
+    max-height: 15px;
+    flex-shrink:  0;
+    background-color: gray; 
+}
+.mainFooter * {
+    margin: 0;
+}
+.mainFooter p {
+    text-align: center;
+}
+
+
+/* hamburger menu */
+
+ul {
+    list-style: none;
+}
+
+nav ul li {
+    display: none;
+}
+
+nav ul:hover {
+    background: lightgrey;
+}
+
+nav ul:hover li {
+    display: block;
+}
+
+a {
+    text-decoration: none;
+    color: black;
+}
+
+a:visited {
+    color: black;
+}
+
+/* option menu */
+.optionsHeader {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.optionsHeader .right {
+    order: 2;
+}
+
+.optionsHeader .left {
+    order: 1;
+}
+
+
+/* main root of all loaded component's templates */
+main {
+    height: auto;
+    display: flex;
+    flex-direction: row;
+
+    /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#d6f9ff+0,9ee8fa+100;Blue+3D */
+    background: #d6f9ff; /* Old browsers */
+    background: -moz-linear-gradient(top, #d6f9ff 0%, #9ee8fa 100%); /* FF3.6-15 */
+    background: -webkit-linear-gradient(top, #d6f9ff 0%,#9ee8fa 100%); /* Chrome10-25,Safari5.1-6 */
+    background: linear-gradient(to bottom, #d6f9ff 0%,#9ee8fa 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#d6f9ff', endColorstr='#9ee8fa',GradientType=0 ); /* IE6-9 */
+    background-repeat: no-repeat;
+
+}
+
+router-outlet + * {
+    width: 100%;
+}
+
+/* NORMAL CONTAINER (Processing,About, Settings, Help) */
+.normal-container {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.normal-container > * {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+
+/* SPLITSCREEN CONTAINER (from overview page that consists of contact and chat component) */
+.splitscreen-container {
+    display: flex;
+    flex-direction: row;
+}
+
+.splitscreen-container > *:nth-child(1) {
+    flex-grow: 1;
+}
+.splitscreen-container > *:nth-child(2) {
+    flex-grow: 2;
+}
+
+/* some inappropriate hardcoding - why is 120 vh and still smaller than viewport height??? */
+.splitscreen-container > * {
+    height: 120vh;
+}
+
+
+.splitscreen-container > * {
+    flex-basis: 200px;
+    justify-content: space-between;
+}
+
+/* main content - i.e. not the headers and options  => make this content scrollable */
+
+/* TODO: vsible scrollbar with all browsers except chrome */
+.mainContent {
+    overflow-y: scroll;
+    height: 70%;
+}
+
+.mainContent::-webkit-scrollbar {
+    display: none;
+}
+
+/* Contact component */
+
+.contacts, .options {
+    list-style: none;
+    padding: 0px 5px 0px 5px;
+    margin-bottom: 0;
+    margin-top: 0;
+ }
+
+.contacts li, .options li {
+    height: 35px;
+    padding-bottom: 10px;
+    margin-bottom: 10px;
+    display: flex;
+    flex-direction: row;
+    align-items: baseline;
+
+    border: 1px solid darkgray;
+    border-radius: 25px;
+
+
+    /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#ffffff+0,e5e5e5+100;White+3D */
+background: rgb(255,255,255); /* Old browsers */
+background: -moz-radial-gradient(center, ellipse cover, rgba(255,255,255,1) 0%, rgba(229,229,229,1) 100%); /* FF3.6-15 */
+background: -webkit-radial-gradient(center, ellipse cover, rgba(255,255,255,1) 0%,rgba(229,229,229,1) 100%); /* Chrome10-25,Safari5.1-6 */
+background: radial-gradient(ellipse at center, rgba(255,255,255,1) 0%,rgba(229,229,229,1) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#e5e5e5',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
+}
+
+.contacts li:hover, .options li:hover {
+    box-shadow: 3px 3px gray;
+}
+
+
+.optionsIcon {
+    max-width: 60px;
+    padding-left: 12px;
+}
+
+.optionsText {
+    font-size: 25px;
+}
+
+img {
+    height: 30px;
+    width: 30px;
+}
+
+
+/* chat window */
+
+#chat {
+    list-style: none;
+}
+
+.chatBubble {
+    margin-bottom: 1%;
+    display: flex;
+    flex-direction: row;
+}
+
+.chatBubble.mainUser {
+    margin-right: 35%;
+}
+
+.chatBubble.otherUser {
+    margin-left: 35%;
+}
+
+.content {
+    border: 1px solid white;
+    border-radius: 30px;
+
+    width: 40%;
+
+    /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#ffffff+0,f6f6f6+47,ededed+100;White+3D+%231 */
+    background: #ffffff; /* Old browsers */
+    background: -moz-radial-gradient(center, ellipse cover, #ffffff 0%, #f6f6f6 47%, #ededed 100%); /* FF3.6-15 */
+    background: -webkit-radial-gradient(center, ellipse cover, #ffffff 0%,#f6f6f6 47%,#ededed 100%); /* Chrome10-25,Safari5.1-6 */
+    background: radial-gradient(ellipse at center, #ffffff 0%,#f6f6f6 47%,#ededed 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#ededed',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
+}
+
+.chatIcon {
+    width: 40px;
+    flex: 0 0 auto;
+}
+
+.sender {
+    margin: 1% 0% 1% 5%;
+}
+.message {
+    margin: 1% 0% 1% 5%;
+}
