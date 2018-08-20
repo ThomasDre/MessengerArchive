@@ -4,7 +4,9 @@
 
 export const environment = {
   production: false,  
-  debug: true,
+  debug: false,
+  server: "http://localhost:8081",
+  //server: '${location.protocol}//${location.hostname}:8081',
   picFolder: "../../../assets/img/icons/",
   chatFolder: "../../../assets/data/chats/", // unverified
   contactFolder: "../../../assets/data/", // unverified

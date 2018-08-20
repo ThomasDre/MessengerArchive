@@ -5,6 +5,7 @@ import { timeout } from 'q';
 import { Subject, Observable } from 'rxjs';
 import { TimeService } from './time.service';
 import * as $ from 'jquery';
+import { HttpService } from './http.service';
 
 @Injectable({
   providedIn: 'root'
@@ -30,7 +31,7 @@ export class ParsePlainChatService {
   private regexTimeStamp = "[0-3][0-9]\.[0-1][0-9]\.[0-9]{2}\,\ [0-2][0-9]\:[0-6][0-9]";
   private regexName = ".+\:\ "
 
-  constructor(private timeService: TimeService) { 
+  constructor(private timeService: TimeService, private httpService: HttpService) { 
     this.fr = new FileReader();
     this.parseTmpResult = new Subject<ChatDTO>();
     this.parseTmpResult$ = this.parseTmpResult.asObservable();
@@ -85,16 +86,18 @@ export class ParsePlainChatService {
           } else {
             current.addClass("otherUser");
           }
-        }
-        
-        if (mainUserCount == 0) {
-          reject("Submitted 'main user' name is invalid - none of the members could be identified by this name");
-        }        
+        } 
       });
+
+      if (mainUserCount == 0) {
+        reject("Submitted 'main user' name is invalid - none of the members could be identified by this name");
+        return;
+      }       
   
-      // save file
-      // TODO MISSING
-      resolve();
+      // may check for response status 
+      this.httpService.saveChat(this.container, this.returnValue.isGroup(), this.returnValue.getChatName(), this.returnValue.getChatMembers()).subscribe((res: Response) => {
+        resolve();
+      })
     })
   }
 
@@ -187,7 +190,6 @@ export class ParsePlainChatService {
         msg = textExcDate.slice(name.length + 2, textExcDate.length);
 
         if (this.returnValue.containUser(name) == false) {
-          alert(name);
           this.returnValue.addUser(name);
         }
       
