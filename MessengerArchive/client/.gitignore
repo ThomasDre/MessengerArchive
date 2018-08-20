@@ -77,3 +77,8 @@ testem.log
 .DS_Store
 
 Thumbs.db
+
+
+# assets - parsed chats, user selected icons
+src/assets/data/chats/
+src/assets/img/icons/userSpecific/*
