@@ -14,6 +14,7 @@ import { AppRoutingModule } from './app-routing/app-routing.module';
 import { JSONReaderService } from './services/jsonreader.service';
 import { ParsePlainChatService } from './services/parse-plain-chat.service';
 import { TimeService } from './services/time.service';
+import { HttpService } from './services/http.service';
 import { ProccessingComponent } from './components/proccessing/proccessing.component';
 
 @NgModule({
@@ -36,7 +37,8 @@ import { ProccessingComponent } from './components/proccessing/proccessing.compo
   providers: [
     JSONReaderService,
     ParsePlainChatService,
-    TimeService
+    TimeService,
+    HttpService
   ],
   bootstrap: [AppComponent]
 })
